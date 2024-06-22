@@ -7,6 +7,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Course {
@@ -17,6 +18,7 @@ public class Course {
 
   @ManyToMany(mappedBy = "likedCourses")
   Set<Student> likes;
-  // additional properties
-  // standard constructors, getters, and setters
+
+  @OneToMany(mappedBy = "course")
+  Set<CourseRating> ratings;
 }

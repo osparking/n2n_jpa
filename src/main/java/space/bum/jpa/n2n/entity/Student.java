@@ -10,6 +10,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import lombok.Data;
 
 @Entity
@@ -29,6 +30,6 @@ public class Student {
   Set<Course> likedCourses = new HashSet<>();
   // @formatter:on
 
-  // additional properties
-  // standard constructors, getters, and setters
+  @OneToMany(mappedBy = "student")
+  Set<CourseRating> ratings;
 }
