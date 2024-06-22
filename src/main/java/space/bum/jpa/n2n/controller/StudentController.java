@@ -6,7 +6,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import lombok.AllArgsConstructor;
 import space.bum.jpa.n2n.entity.Course;
+import space.bum.jpa.n2n.entity.CourseRating;
+import space.bum.jpa.n2n.entity.CourseRatingKey;
 import space.bum.jpa.n2n.entity.Student;
+import space.bum.jpa.n2n.repository.CourseRatingRepository;
 import space.bum.jpa.n2n.repository.CourseRepository;
 import space.bum.jpa.n2n.repository.StudentRepository;
 
@@ -17,6 +20,7 @@ public class StudentController {
 
   private StudentRepository studentRepository;
   private CourseRepository courseRepository;
+  private CourseRatingRepository courseRatingRepository;
 
   @GetMapping("/")
   public String showHome() {
@@ -24,7 +28,11 @@ public class StudentController {
     var student = new Student();
 
     student.getLikedCourses().add(course);
-    var result = studentRepository.save(student);
+    student = studentRepository.save(student);
+
+    var crKey = new CourseRatingKey(student.getId(), course.getId());
+    var courseRating = new CourseRating(crKey, student, course, 5);
+    courseRatingRepository.save(courseRating);
     
     return "home";
   }
