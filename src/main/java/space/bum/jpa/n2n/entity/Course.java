@@ -12,9 +12,8 @@ public class Course {
   @Id
   Long id;
 
-  @ManyToMany
+  @ManyToMany(mappedBy = "likedCourses")
   Set<Student> likes;
-
   // additional properties
   // standard constructors, getters, and setters
 }
