@@ -31,5 +31,5 @@ public class Student {
   // @formatter:on
 
   @OneToMany(mappedBy = "student")
-  Set<CourseRating> ratings;
+  Set<CourseRating> ratings = new HashSet<>();
 }
