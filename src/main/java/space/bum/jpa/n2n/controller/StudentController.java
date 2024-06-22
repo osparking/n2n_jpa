@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import lombok.AllArgsConstructor;
+import space.bum.jpa.n2n.entity.Course;
 import space.bum.jpa.n2n.entity.Student;
 import space.bum.jpa.n2n.repository.CourseRepository;
 import space.bum.jpa.n2n.repository.StudentRepository;
@@ -19,9 +20,12 @@ public class StudentController {
 
   @GetMapping("/")
   public String showHome() {
+    var course = courseRepository.save(new Course());
     var student = new Student();
-    var result = studentRepository.save(student);
 
+    student.getLikedCourses().add(course);
+    var result = studentRepository.save(student);
+    
     return "home";
   }
 
