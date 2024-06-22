@@ -1,5 +1,6 @@
 package space.bum.jpa.n2n.entity;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import jakarta.persistence.Entity;
@@ -22,5 +23,5 @@ public class Course {
   Set<Student> likes;
 
   @OneToMany(mappedBy = "course")
-  Set<CourseRating> ratings;
+  Set<CourseRating> ratings = new HashSet<>();
 }
