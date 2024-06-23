@@ -24,4 +24,7 @@ public class Course {
 
   @OneToMany(mappedBy = "course")
   Set<CourseRating> ratings = new HashSet<>();
+
+  @OneToMany(mappedBy = "course")
+  Set<CourseRegistration> registrations;
 }
