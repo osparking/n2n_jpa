@@ -25,7 +25,7 @@ public class CourseRegistration {
 
   @ManyToOne
   @JoinColumn(name = "course_id")
-  Student course;
+  Course course;
 
   LocalDateTime registeredAt;
 
