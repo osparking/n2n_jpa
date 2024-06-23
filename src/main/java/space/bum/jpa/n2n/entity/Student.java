@@ -32,4 +32,7 @@ public class Student {
 
   @OneToMany(mappedBy = "student")
   Set<CourseRating> ratings = new HashSet<>();
+
+  @OneToMany(mappedBy = "student")
+  Set<CourseRegistration> registrations;
 }
